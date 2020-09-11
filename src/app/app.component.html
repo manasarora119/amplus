@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="center-items">
+    <span *ngFor="let data of array;let i = index">
+
+      <span class="click-item" *ngIf="i==0  || i==array.length-1" (click)="check(i)">
+        {{data }}
+      </span>
+      <span class="items" *ngIf="!(i==0|| i==array.length-1)">
+        {{data}}
+      </span>
+    </span>
+  </div>
+
+  <div  class="counter" *ngIf="counter!=10">
+    <div>
+      <div class="display-inline">
+        <span class="player">
+          Player 1
+        </span >
+        <br>
+        <div class="score">
+          <b>
+            Score: {{A}}
+          </b> 
+        </div>
+      </div>
+      <div style="position:absolute; margin-top: 30px;" class="display-inline">
+        <span   class="player">
+          Player 2
+        </span >
+        <br>
+        
+        <div class="score">
+        <b>
+          Score: {{B}}
+        </b> 
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <h2 *ngIf="counter==10">
+    Hurray winner is {{ A>B ? 'A':'B'}}
+  </h2>
+
+</div>
