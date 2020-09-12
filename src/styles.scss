@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+  
+    font-style: oblique;
+    background: linear-gradient(90deg, rgb(34 86 110 / 61%) 0%, #e0e0f2 35%, #4b6174 100%);
+  
+    // background: linear-gradient(90deg, rgb(217 227 55 / 61%) 0%, rgb(215 215 231) 35%, rgb(201 213 139) 100%);
+}
+
+// Bootstrap CSS
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities/spacing';
+
+::ng-deep .mat-dialog-content{
+overflow: unset;
+max-height: unset;
+}
+
+
+.mat-dialog-container {
+
+    // background: linear-gradient(90deg, rgba(217, 227, 55, 0.61) 0%, #d7d7e7 35%, #c9d58b 100%);
+  
+    background: linear-gradient(90deg, rgb(34 86 110 / 61%) 0%, #e0e0f2 35%, #4b6174 100%);
+    color: black;
+}
+
+
+
+.action-bar{
+    float: right;
+    }
+input ,textarea{
+    width: 95%;
+}
+.input-wrapper{
+    width: 100%;
+}
+.mat-button{
+
+    background: #e0e1e1;
+}
+tr { 
+    border: solid 1px black;
+   
+  }
+  tr:first-child {
+    border-top: none;
+  }
+  tr:last-child {
+    border-bottom: none;
+  }

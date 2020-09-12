@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+    tr {
+        td {
+            text-align: center;
+        }
+    }
+}
+.right {
+    float: right;
+    img{
+        width:31px
+    }
+}
+.jss14 {
+    overflow-x: auto;
+    position: relative;
+}
+
+mat-icon{
+    margin: 10px;
+}
+::ng-deep mat-dialog-container{
+
+    background-color: unset;
+}

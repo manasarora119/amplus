@@ -1,0 +1,39 @@
+<div>
+
+    <h1 mat-dialog-title>View User Details</h1>
+
+
+    <div mat-dialog-content>
+        <form [formGroup]="createForm">
+        <div class="inputs-wrapper row">
+            
+                <div class="input-wrapper mb-3">
+                    <div class="input-label">Contact Person’s Name <span class="color-red">*</span>
+                    </div>
+                    <input type="text" formControlName="name" id="name" nbInput placeholder="Enter Name" fullWidth>
+                </div>
+           
+         
+                <div class="input-wrapper mb-3">
+                    <div class="input-label">Contact person’s phone<span class="color-red">*</span>
+                    </div>
+                    <input type="text" formControlName="phone" id="phone" nbInput placeholder="Enter Phone Number"
+                        fullWidth>
+                </div>
+          
+                <div class="input-wrapper mb-2">
+                    <div class="input-label">Email<span class="color-red">*</span></div>
+                    <textarea nbInput formControlName="email" id="email" placeholder="Enter email" fullWidth
+                        style="height: 40px;"></textarea>
+              
+            </div> 
+        </div>
+     
+        <div class="action-bar"  mat-dialog-actions>
+            <button mat-button (click)="onNoClick()">No Thanks</button>
+            <button mat-button cdkFocusInitial (click)="submitModal()" >Ok</button>
+        </div>
+    </form>
+    </div>
+</div> 
+

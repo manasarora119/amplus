@@ -1,46 +1,76 @@
 import { Component } from '@angular/core';
+import { AddModalComponent } from './modals/add-modal/add-modal.component';
 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ViewDetailsModalComponent } from './modals/view-details-modal/view-details-modal.component';
+// import { ToastrService } from 'ngx-toastr';
+// import { DynamicGrid } from '../grid.model';
+
+
+const ELEMENT_DATA: any[] = [
+  { name: 'Manas', phone:9090909090, email: 'manas@mm.com' },
+  { name: 'Kumar', phone:9999999998, email:  'manas@mm.com'},
+  { name: 'Arora', phone: 9999999999, email:  'manas@mm.com'},
+
+];
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  array: any = [];
-  counter: number;
-  A = 0
-  B = 0
-  rev: any;
-  constructor() {
-    this.counter = 0
-    this.array = []
-    for (let i = 0; i < 10; i++) {
-      this.array.push(Math.floor(Math.random() * 10) + 1)
-    }
-    // this.array.push(Math.floor(Math.random() * 6) + 1  )
-    console.log(this.array, "this.array");
-  }
-  check(i) {
-    console.log("check ",i);
-    
-    // if (rev) {
-    //   this.rev = this.array[this.array.length - 1];
-    //   this.array.pop()
-    // } else {
-    //   this.rev = this.array[0];
-    //   this.array.slice(0)
-    // }
 
-    let type;
-    if (this.counter % 2 == 0) {
-      type = 'A';
-    } else {
-      type = 'B';
+  title = 'rx-logix';
+  data = [];
+
+  dataSource: any;
+  constructor(public dialog: MatDialog ) {
+    this.dataSource = ELEMENT_DATA;
+  }
+
+  editRow(i) {
+   const dialogRef = this.dialog.open(ViewDetailsModalComponent, {
+      width: '350px',
+      height: '400px',
+      data: this.dataSource[i]
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result  && !(
+        result.name == this.dataSource[i].name &&
+        result.phone == this.dataSource[i].phone &&
+        result.email == this.dataSource[i].email
+      )
+      ) {
+        this.dataSource[i] = result
+      }
+    });
+  }
+  add() {
+    const dialogRef = this.dialog.open(AddModalComponent, {
+      width: '350px',
+      height: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.name && result.email) {
+        this.dataSource.push(result)
+
+      }
+    });
+  }
+
+  deleteRow(i) {
+    console.log(i);
+    if(this.dataSource.length==1){
+ 
+      // this.toast.success('Hello world!', 'Toastr fun!');
+      return
     }
-    this[type] = this[type] + this.array[i];
-    this.counter++;
-    this.array = this.array.slice(0, i).concat(this.array.slice(i + 1, this.array.length))
-  
+    this.dataSource.splice(i, 1)
+  }
+  ngOnInit() {
   }
 
 }
+

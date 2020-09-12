@@ -1,47 +1,63 @@
-<div class="container">
+<!--The content below is only a placeholder and can be replaced.-->
+<div style=" padding: 15px;">
+  <h1 style="text-align: center;">
+    Welcome to {{ title }}!
+  </h1>
 
-  <div class="center-items">
-    <span *ngFor="let data of array;let i = index">
 
-      <span class="click-item" *ngIf="i==0  || i==array.length-1" (click)="check(i)">
-        {{data }}
-      </span>
-      <span class="items" *ngIf="!(i==0|| i==array.length-1)">
-        {{data}}
-      </span>
-    </span>
+  <div class="right">
+    <img src="../assets/images/add.png" (click)="add()">
   </div>
 
-  <div  class="counter" *ngIf="counter!=10">
-    <div>
-      <div class="display-inline">
-        <span class="player">
-          Player 1
-        </span >
-        <br>
-        <div class="score">
-          <b>
-            Score: {{A}}
-          </b> 
-        </div>
-      </div>
-      <div style="position:absolute; margin-top: 30px;" class="display-inline">
-        <span   class="player">
-          Player 2
-        </span >
-        <br>
-        
-        <div class="score">
-        <b>
-          Score: {{B}}
-        </b> 
-        </div>
-      </div>
+  <br>
+  <br><br>
+  <div class="jss14">
+    <div style="overflow-y: auto;">
+
+      <table border=1 frame=void rules=rows>
+        <thead>
+          <tr>
+            <th>
+              Position
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Phone
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let data of dataSource;let i =index">
+            <td>
+              {{i+1}}
+            </td>
+            <td>
+              {{data.name}}
+            </td>
+            <td>
+              {{data.phone}}
+            </td>
+            <td>
+              {{data.email}}
+            </td>
+            <td style="width: 96px; padding: 0px 5px; box-sizing: border-box;">
+              <div style="display: flex;">
+                <mat-icon (click)="editRow(i)">visibility</mat-icon>
+                <mat-icon (click)="deleteRow(i)">highlight_off</mat-icon>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
   </div>
-  <h2 *ngIf="counter==10">
-    Hurray winner is {{ A>B ? 'A':'B'}}
-  </h2>
-
 </div>
